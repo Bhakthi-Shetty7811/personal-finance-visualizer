@@ -1,0 +1,279 @@
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --accent: #14b8a6;
+  --accent-light: #d1fae5;
+  --bg-gradient: linear-gradient(to right, #6366f1, #3b82f6);
+  --bg-section: #f3f4f6;
+  --danger: #ef4444;
+
+  --background: #f9fafb;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --radius: 1rem;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+
+  --text: #1e293b;
+  --muted: #64748b;
+
+  --max-width: 1440px;
+}
+
+/* ========= Base Reset ========== */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+}
+
+/* ========= Navbar ========== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-gradient);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.nav-links a {
+  color: #e0e7ff;
+  margin-left: 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* ========= Main Layout ========== */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ========= Typography ========== */
+.main-heading {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.section-header::after {
+  content: '';
+  width: 3rem;
+  height: 4px;
+  background-color: var(--accent);
+  border-radius: 999px;
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+
+/* ========= Cards ========== */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* ========= Summary Cards ========== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  background: var(--accent-light);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: background 0.3s ease;
+}
+
+.summary-card:hover {
+  background: #ccfbf1;
+}
+
+.summary-card .label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.summary-card .value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 0.3rem;
+  color: var(--text);
+}
+
+/* ========= Chart & Budget Layouts ========== */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* ========= Input ========== */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: #f8fafc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  outline: none;
+}
+
+/* ========= Transaction Layout ========= */
+.transaction-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .transaction-grid {
+    flex-direction: row;
+  }
+
+  .transaction-grid > .card {
+    flex: 1;
+  }
+}
+
+/* ========= Animations ========== */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card, .summary-card, .main-heading {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+/* ========= Text Styling Enhancements ========== */
+label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.text-muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: #f1f5f9;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.input:focus {
+  border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  outline: none;
+}
+
+.button {
+  background: var(--bg-gradient);
+  color: white;
+  padding: 0.65rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.15);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-muted {
+  color: var(--muted);
+}
