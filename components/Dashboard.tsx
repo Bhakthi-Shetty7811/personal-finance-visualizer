@@ -32,15 +32,16 @@ export default function Dashboard() {
   });
 
   const comparisonData = Object.keys(budgets).map((category) => {
-    const spent = transactions
-      .filter((t) => t.category === category)
-      .reduce((sum, t) => Number(sum) + Number(t.amount), 0);
-    return {
-      category,
-      budget: budgets[category],
-      spent,
-    };
+   const spent = transactions
+    .filter((t) => t.category === category)
+    .reduce((sum: number, t) => sum + Number(t.amount), 0);
+   return {
+    category,
+    budget: budgets[category],
+    spent,
+   };
   });
+
 
   useEffect(() => {
     const stored = localStorage.getItem("transactions");
