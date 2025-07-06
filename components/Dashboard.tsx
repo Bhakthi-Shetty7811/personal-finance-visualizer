@@ -32,9 +32,9 @@ export default function Dashboard() {
   });
 
   const comparisonData = Object.keys(budgets).map((category) => {
-   const spent = transactions
+   const spent: number = transactions
     .filter((t) => t.category === category)
-    .reduce((sum: number, t) => sum + Number(t.amount), 0);
+    .reduce((sum: number, t: any) => sum + parseFloat(t.amount), 0);
    return {
     category,
     budget: budgets[category],
