@@ -32,16 +32,15 @@ export default function Dashboard() {
   });
 
   const comparisonData = Object.keys(budgets).map((category) => {
-   const spent: number = transactions
-    .filter((t) => t.category === category)
-    .reduce((sum: number, t: any) => sum + parseFloat(t.amount), 0);
-   return {
-    category,
-    budget: budgets[category],
-    spent,
-   };
+    const spent = transactions
+      .filter((t) => t.category === category)
+      .reduce((sum, t) => Number(sum) + Number(t.amount), 0);
+    return {
+      category,
+      budget: budgets[category],
+      spent,
+    };
   });
-
 
   useEffect(() => {
     const stored = localStorage.getItem("transactions");
@@ -84,7 +83,9 @@ export default function Dashboard() {
     return acc;
   }, {});
 
-  const topCategory = Object.entries(categoryTotals).sort((a, b) => b[1] - a[1])[0]?.[0];
+  const topCategory = (Object.entries(categoryTotals) as [string, number][])
+  .sort((a, b) => b[1] - a[1])[0]?.[0];
+
 
   const highestTransaction =
     transactions.length > 0
@@ -205,6 +206,3 @@ export default function Dashboard() {
     </>
   );
 }
-
-
-
